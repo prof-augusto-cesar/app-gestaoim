@@ -1,0 +1,404 @@
+/* ==========================================================================
+   PALETA DE CORES INTEGRADA (Identidade Visual Toda a Vida da Gente)
+   ========================================================================== */
+   :root {
+    --verde-fundo: #004d4d;      /* Verde-petróleo profundo do fundo do site */
+    --verde-escuro: #003333;     /* Tom de verde do cabeçalho e rodapé */
+    --branco-card: #ffffff;      /* Fundo dos blocos de conteúdo */
+    --texto-escuro: #1a1a1a;     /* Cor principal para leitura de textos */
+    --texto-suave: #555555;      /* Subtítulos e descrições */
+    --azul-links: #0066cc;       /* Links e botões secundários */
+    --cor-sucesso: #008060;      /* Cor para botões principais e confirmações */
+    --cor-alerta: #b7791f;       /* Amarelo/laranja queimado para "Em construção" */
+    --cinza-borda: #e2e8f0;      /* Divisores leves e contornos */
+}
+
+/* ==========================================================================
+   ESTILOS GERAIS DE ESTRUTURA
+   ========================================================================== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--verde-fundo);
+    color: var(--texto-escuro);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Estrutura de Cartão com cantos arredondados (conforme o print) */
+.card {
+    background-color: var(--branco-card);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 25px;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   CABECALHO E RODAPÉ DO SITE
+   ========================================================================== */
+.header-site {
+    background-color: var(--verde-escuro);
+    color: var(--branco-card);
+    padding: 25px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-container h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.header-site .slogan {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #a3cbcb;
+}
+
+.footer-site {
+    background-color: var(--verde-escuro);
+    color: #a3cbcb;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    margin-top: 50px;
+}
+
+/* ==========================================================================
+   FORMULÁRIOS E CADASTRO
+   ========================================================================== */
+.titulo-secao {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--verde-fundo);
+    font-size: 22px;
+    border-bottom: 2px solid var(--cinza-borda);
+    padding-bottom: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+    background-color: #fcfdfd;
+}
+
+.form-group input:focus {
+    border-color: var(--verde-fundo);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 77, 77, 0.15);
+}
+
+.checkbox-group {
+    background-color: #f4f7f7;
+    padding: 18px;
+    border-radius: 8px;
+    margin: 25px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    border-left: 4px solid var(--verde-fundo);
+}
+
+.checkbox-group input {
+    margin-top: 4px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* ==========================================================================
+   SISTEMA DE ABAS E CRIAÇÃO DINÂMICA DE PERGUNTAS
+   ========================================================================== */
+.abas {
+    display: flex;
+    border-bottom: 2px solid var(--cinza-borda);
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+.aba-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    color: #718096;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.aba-btn:hover { color: var(--verde-fundo); }
+
+.aba-btn.ativa {
+    border-bottom-color: var(--verde-fundo);
+    color: var(--verde-fundo);
+}
+
+.instrucoes-instrumento {
+    background-color: #f7fafc;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--azul-links);
+}
+
+.instrucoes-instrumento h3 { margin: 0 0 5px 0; font-size: 16px; color: var(--verde-escuro); }
+.instrucoes-instrumento p { margin: 0; font-size: 14px; color: var(--texto-suave); }
+
+/* Bloco de Questões Linhas Estilizadas */
+.bloco-perguntas {
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.questao-linha {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--cinza-borda);
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: background-color 0.15s;
+}
+
+.questao-linha:last-child { border-bottom: none; }
+.questao-linha:hover { background-color: #f8fafc; }
+
+.questao-linha input {
+    transform: scale(1.2);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.questao-linha span {
+    font-size: 15px;
+}
+
+/* Áreas em Construção */
+.em-construcao {
+    text-align: center;
+    padding: 50px 20px;
+    border: 2px dashed var(--cor-alerta);
+    background-color: #fffaf0;
+    border-radius: 8px;
+}
+
+.em-construcao h3 { margin: 0 0 10px 0; color: #7b341e; }
+
+.badge-alerta {
+    background-color: var(--cor-alerta);
+    color: var(--branco-card);
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.texto-construcao {
+    margin-top: 15px;
+    color: #7b341e;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   BOTÕES DE AÇÃO
+   ========================================================================== */
+.btn-principal {
+    background-color: var(--cor-sucesso);
+    color: var(--branco-card);
+    padding: 14px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-principal:hover { background-color: #00664d; }
+
+.btn-secundario {
+    background-color: var(--azul-links);
+    color: var(--branco-card);
+    padding: 14px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-secundario:hover { background-color: #0052a3; }
+
+.btn-voltar {
+    background-color: #718096;
+    color: var(--branco-card);
+    padding: 14px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-voltar:hover { background-color: #4a5568; }
+
+.btn-central {
+    display: block;
+    margin: 35px auto 10px auto;
+}
+
+/* ==========================================================================
+   ESTRUTURA E IMPRESSÃO DO RELATÓRIO
+   ========================================================================== */
+.cabecalho-relatorio {
+    text-align: center;
+    border-bottom: 2px solid var(--verde-fundo);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.cabecalho-relatorio h2 { margin: 0; font-size: 24px; color: var(--verde-fundo); }
+.sub-relatorio { margin: 4px 0; font-weight: bold; color: var(--texto-suave); }
+.profissional-assinatura { margin: 2px 0 0 0; font-size: 14px; font-style: italic; color: var(--texto-suave); }
+
+.bloco-dados {
+    background-color: #f7fafc;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    border: 1px solid var(--cinza-borda);
+}
+.bloco-dados p { margin: 6px 0; font-size: 15px; }
+
+.grafico-bloco { margin-bottom: 30px; }
+.titulo-grafico { font-size: 18px; color: var(--verde-fundo); margin-bottom: 5px; }
+.frase-efeito { text-align: center; font-style: italic; font-size: 13px; color: #4a5568; margin-bottom: 20px; }
+.canvas-wrapper { position: relative; height: 360px; width: 100%; }
+
+.termos-aceite {
+    background-color: #f0fdf4;
+    border-left: 5px solid var(--cor-sucesso);
+    padding: 15px;
+    margin-top: 35px;
+    font-size: 13px;
+    border-radius: 0 6px 6px 0;
+}
+.termos-aceite p { margin: 4px 0; color: #14532d; }
+
+.botoes-acao {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+/* Auxiliares Utilitários */
+.hidden { display: none !important; }
+
+/* Configurações específicas para geração e impressão limpa de PDF */
+@media print {
+    .no-print, .header-site, .footer-site, .botoes-acao, nav { display: none !important; }
+    body { background-color: #ffffff; color: #000000; padding: 0; margin: 0; }
+    .container { max-width: 100%; margin: 0; padding: 0; }
+    .card { box-shadow: none; padding: 0; border: none; margin-bottom: 0; }
+    .canvas-wrapper { height: 420px; }
+}
+/* ==========================================================================
+   NOVO GRÁFICO PURAMENTE OFFLINE E IMPRIMÍVEL
+   ========================================================================== */
+   .grafico-nativo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 320px;
+    padding: 25px 20px 10px 20px;
+    background-color: #f8fafc;
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.barra-coluna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.barra-preenchimento {
+    width: 65%;
+    background-color: #004d4d !important; /* Força a cor verde-petróleo no PDF */
+    -webkit-print-color-adjust: exact;    /* Força navegadores baseados em Webkit a imprimirem a cor */
+    print-color-adjust: exact;            /* Força o Firefox a imprimir a cor de fundo */
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    min-height: 25px; /* Altura mínima para pontuação zero aparecer sutilmente */
+}
+
+.barra-label {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    color: var(--texto-escuro);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

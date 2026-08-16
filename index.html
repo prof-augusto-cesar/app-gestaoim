@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toda a Vida da Gente - Diagnóstico IM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO DO SITE (Conforme o print enviado) -->
+    <header class="header-site no-print">
+        <div class="header-container">
+            <h1>Toda a Vida da Gente</h1>
+            <p class="slogan">🌱 Instrumentos de Avaliação e Acompanhamento</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- TELA 1: CADASTRO INICIAL -->
+        <section id="tela-cadastro" class="card no-print">
+            <h2 class="titulo-secao">Cadastro do Avaliado e Autorização</h2>
+            <form id="form-cadastro">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo do Avaliado:</label>
+                        <input type="text" id="nome" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="idade">Idade:</label>
+                        <input type="number" id="idade" required min="0" max="120">
+                    </div>
+                </div>
+                
+                <!-- Exibido dinamicamente via JS se idade < 18 -->
+                <div id="campos-responsavel" class="hidden">
+                    <div class="form-group">
+                        <label for="nome-responsavel">Nome do Responsável Legal:</label>
+                        <input type="text" id="nome-responsavel">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp (com DDD):</label>
+                        <input type="tel" id="whatsapp" placeholder="(16) 99999-9999" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" required>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="autorizacao" required>
+                    <label for="autorizacao">
+                        Declaro autorização expressa para a coleta destas respostas. Consinto o envio deste relatório de indícios diagnósticos para o meu e-mail/WhatsApp e para o WhatsApp profissional do Toda a Vida da Gente.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-principal">Iniciar Avaliação</button>
+            </form>
+        </section>
+
+        <!-- TELA 2: ÁREA DOS INSTRUMENTOS (SISTEMA POR ABAS) -->
+        <section id="tela-sistema" class="card hidden no-print">
+            <nav class="abas">
+                <button class="aba-btn ativa" onclick="mudarAba('inteligencias')">1. Inteligências Múltiplas</button>
+                <button class="aba-btn" onclick="mudarAba('psicopedagogico')">2. Indícios Psicopedagógicos</button>
+                <button class="aba-btn" onclick="mudarAba('autismo')">3. Protocolo PCA</button>
+            </nav>
+
+            <!-- ABA 1: INTELIGÊNCIAS MÚLTIPLAS -->
+            <div id="conteudo-inteligencias" class="aba-conteudo">
+                <div class="instrucoes-instrumento">
+                    <h3>Instrumento para Gráfico Indicativo de Inteligências Múltiplas (PI.1)</h3>
+                    <p>Assinale apenas as afirmações abaixo que correspondem ou se identificam com o perfil do avaliado:</p>
+                </div>
+                
+                <form id="form-perguntas">
+                    <!-- O JavaScript vai injetar as 45 perguntas embaralhadas aqui dentro -->
+                    <div id="container-perguntas-aleatorias" class="bloco-perguntas"></div>
+                    
+                    <button type="button" class="btn-principal btn-central" onclick="calcularResultados()">Gerar Relatório Final</button>
+                </form>
+            </div>
+
+            <!-- ABA 2: PSICOPEDAGÓGICO (DELINEADO / CONSTRUÇÃO) -->
+            <div id="conteudo-psicopedagogico" class="aba-conteudo hidden">
+                <div class="em-construcao">
+                    <h3>2. Instrumento Inicial de Indícios Psicopedagógicos</h3>
+                    <span class="badge-alerta">Site em construção</span>
+                    <p class="texto-construcao">Espaço reservado para o futuro Projeto Personalizado de Acompanhamento Escolar Online com ou sem Projeto de Vida.</p>
+                </div>
+            </div>
+
+            <!-- ABA 3: AUTISMO (DELINEADO / CONSTRUÇÃO) -->
+            <div id="conteudo-autismo" class="aba-conteudo hidden">
+                <div class="em-construcao">
+                    <h3>3. Protocolo de Indícios de Pessoas na Condição do Autismo (PCA)</h3>
+                    <span class="badge-alerta">Site em construção</span>
+                    <p class="texto-construcao">Espaço reservado para as futuras Orientações Educacionais e Projeto Personalizado de Acompanhamento Psicopedagógico.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA 3: RELATÓRIO IMPRESSO / FINAL -->
+        <section id="tela-relatorio" class="card hidden">
+            <div class="cabecalho-relatorio">
+                <h2>Relatório Técnico de Indícios Diagnósticos</h2>
+                <p class="sub-relatorio">Instrumento PI.1 - Inteligências Múltiplas</p>
+                <p class="profissional-assinatura">Prof. Augusto Cesar Corrêa Neto - Psicopedagogo Clínico e Institucional</p>
+            </div>
+
+            <div id="dados-relatorio" class="bloco-dados"></div>
+            
+            <div class="grafico-bloco">
+                <h3 class="titulo-grafico">Gráfico das Inteligências Múltiplas</h3>
+                <p class="frase-efeito">"Embora ninguém possa voltar atrás e fazer um novo começo, qualquer um pode começar agora e fazer um novo fim."</p>
+                <div class="canvas-wrapper">
+                    <!-- NOVO CONTAINER DO GRÁFICO RESTRUTURADO PARA HTML/CSS -->
+                    <div id="grafico-barras-nativo" class="grafico-nativo-container"></div>
+                </div>
+            </div>
+
+            <div id="registro-legal" class="termos-aceite"></div>
+
+            <div class="botoes-acao no-print">
+                <button class="btn-principal" onclick="window.print()">Salvar como PDF / Imprimir</button>
+                <button class="btn-secundario" onclick="enviarWhatsApp()">Enviar via WhatsApp</button>
+                <button class="btn-voltar" onclick="reiniciar()">Nova Avaliação</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ ESTILIZADO -->
+    <footer class="footer-site no-print">
+        <p>2026 - © Prof Augusto Cesar - Todos os direitos reservados - Toda a Vida da Gente.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
